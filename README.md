@@ -48,7 +48,7 @@ study-routine/
 
 ---
 
-## Links
+## Other Docs
 
-- GitHub: [username]
-- LinkedIn: [profile]
+- [Roadmap](ROADMAP.md)
+- [Journal](ROADMAP.md)
