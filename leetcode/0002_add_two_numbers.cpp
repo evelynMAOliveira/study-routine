@@ -1,3 +1,14 @@
+/*
+    Pattern: Brute Force
+    Complexity: O(n)
+    Date: 2026-05-13
+    Approach: Goes through each list one by one getting the sum of each
+    corresponding nodes and after the loop checks to see any remaining l1 or
+    l2 nodes added with the possible remaining carry
+    Mistakes: Did not pay attention to pointer copying and made sure
+    carry's value changed accordingly
+*/
+
 #include <iostream>
 
 struct ListNode {
@@ -10,12 +21,26 @@ struct ListNode {
 
 class Solution {
   public:
-    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
-        int cin = 0, cout = 0;
+    static ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+        ListNode dummy;
+        ListNode *tail = &dummy;
+        int carry = 0;
 
-        while (l1 != nullptr && l2 != nullptr) {
-                }
+        while (l1 || l2 || carry) {
+            int sum = carry;
+            if (l1) {
+                sum += l1->val;
+                l1 = l1->next;
+            }
+            if (l2) {
+                sum += l2->val;
+                l2 = l2->next;
+            }
+            carry = sum / 10;
+            tail->next = new ListNode(sum % 10);
+            tail = tail->next;
+        }
+
+        return dummy.next;
     }
 };
-
-int main() { return 0; }
